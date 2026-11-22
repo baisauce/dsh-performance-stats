@@ -1,0 +1,10 @@
+node_modules/
+*.log
+*.bak
+*.tmp
+_*.mjs
+_DETAIL*.md
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

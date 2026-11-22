@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Performance stats",
+    "description": "A performance overview for the DSH sidebar: token usage and daily timeline, cloud TTFT/decode vs local tool time, cache hit rate, runtime status, session ranking, and remaining Qwen Token Plan credits. Reads only when you open the panel or press Refresh; no timers."
+  }
+}
