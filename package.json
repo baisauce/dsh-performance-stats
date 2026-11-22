@@ -1,6 +1,6 @@
 {
   "name": "dsh-performance-stats",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DSH sidebar performance overview: token usage, daily timeline, cloud TTFT/decode vs local tool time, runtime status, and Qwen Token Plan credits.",
   "type": "module",
   "license": "MIT",

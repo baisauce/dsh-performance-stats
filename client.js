@@ -1101,16 +1101,19 @@ window.__ModuleLoader__.load({
             .slice(0, TOP_DAYS)
             .sort((leftDay, rightDay) => (leftDay.day < rightDay.day ? -1 : 1))
       const count = Math.max(1, shown.length)
-      const slot = 34
+      // One day slot keeps the same bar width as a typical-mode bar (44px at
+      // its cap), so browsing a long range never shows hair-thin columns.
+      const barCap = 44
+      const slot = Math.round(barCap / 0.58)
       const basePlot = baseWidth - left - right
-      // Browse keeps one readable slot per day: scroll once they no longer fit.
+      // Browse scrolls once those slots no longer fit the plot width.
       const scroll = browse && count * slot > basePlot
       const width = scroll ? left + count * slot + right : baseWidth
       const plotWidth = width - left - right
       const plotHeight = height - top - bottom
       const hasSelection = Boolean(selectedDay) && shown.some((day) => day.day === selectedDay)
       const step = scroll ? slot : plotWidth / count
-      const barWidth = Math.max(2, Math.min(browse ? 26 : 44, step * 0.58))
+      const barWidth = Math.max(2, Math.min(barCap, step * 0.58))
       const chartAgg = aggregateDays(shown)
       const max = Math.max(1, ...shown.map((day) => Number(day.tokenTotal) || sumBuckets(day.tokens)))
       const peak = shown.reduce((best, day) => ((Number(day.tokenTotal) || 0) > (Number(best?.tokenTotal) || 0) ? day : best), null)
